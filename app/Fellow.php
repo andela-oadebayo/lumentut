@@ -21,8 +21,12 @@ class Fellow extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function pdgroup(){
-        return $this->hasOne('App\Pdgroups');
+    public function group(){
+        return $this->hasOne('App\groups');
+    }
+
+    public function level(){
+        return $this->belongsTo('App\level');
     }
 
 }

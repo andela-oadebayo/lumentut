@@ -10,7 +10,7 @@ namespace app;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Pdgroup extends Model
+class Group extends Model
 {
     /**
      * @var array

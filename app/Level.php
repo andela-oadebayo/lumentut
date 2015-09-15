@@ -19,7 +19,7 @@ class Level extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
 
-    public function fellow(){
-        return $this->hasOne('App\Fellow');
+    public function fellows(){
+        return $this->hasMany('App\Fellow');
     }
 }
