@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePdgroupsTable extends Migration
+class CreateFellowsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,20 @@ class CreatePdgroupsTable extends Migration
     public function up()
     {
         //
-        Schema::create('pdgroups', function(Blueprint $t)
+        Schema::create('fellows', function(Blueprint $t)
         {
             $t->increments('id');
-            $t->integer('fellow_id')->unsigned();
+            $t->integer('level_id')->unsigned();
+            $t->integer('group_id')->unsigned();
             $t->string('name');
-            $t->text('description')->nullable();
             $t->timestamps();
 
-            $t->foreign('fellow_id')->references('id')->on('fellows')->onDelete('cascade');
 
-        });
+            $t->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
+            $t->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+
+
+        });;
     }
 
     /**
@@ -34,6 +37,6 @@ class CreatePdgroupsTable extends Migration
     public function down()
     {
         //
-        Schema::drop('pdgroups');
+        Schema::drop('fellows');
     }
 }

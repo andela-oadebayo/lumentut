@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFellowsTable extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateFellowsTable extends Migration
     public function up()
     {
         //
-        Schema::create('fellows', function(Blueprint $t)
+        Schema::create('groups', function(Blueprint $t)
         {
             $t->increments('id');
-            $t->integer('class_id')->unsigned();
+            $t->integer('tutor_id')->unsigned();
             $t->string('name');
+            $t->text('description')->nullable();
             $t->timestamps();
 
-        });
+            $t->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
 
-        Schema::table('fellows', function($t)
-        {
-            $t->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
         });
     }
 
@@ -36,6 +34,6 @@ class CreateFellowsTable extends Migration
     public function down()
     {
         //
-        Schema::drop('fellows');
+        Schema::drop('groups');
     }
 }
