@@ -14,3 +14,9 @@
 $app->get('/', function () use ($app) {
     return $app->welcome();
 });
+
+
+$app->group(['prefix' => 'fellows'], function ($app){
+    $app->get('/', 'App\Http\Controllers\FellowsController@index');
+    $app->get('/{fellowId}', 'App\Http\Controllers\FellowsController@show');
+});

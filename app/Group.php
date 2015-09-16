@@ -22,6 +22,6 @@ class Group extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function tutor(){
-        return $this->hasOne('App\Tutor');
+        return $this->belongsTo('App\Tutor');
     }
 }

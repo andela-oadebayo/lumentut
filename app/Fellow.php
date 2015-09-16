@@ -22,7 +22,7 @@ class Fellow extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function group(){
-        return $this->hasOne('App\groups');
+        return $this->belongsTo('App\group');
     }
 
     public function level(){
